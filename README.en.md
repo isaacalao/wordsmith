@@ -1,6 +1,5 @@
 # Let's containerize the wordsmith project!
 
-
 The wordsmith project is split into 3 parts:
 
 - web: frontend web server written in Go
@@ -14,7 +13,6 @@ There will be 3 steps:
 1. Write multiple Dockerfiles. to build container images.
 2. Write a Compose file, to run the app locally.
 3. Deploy on Kubernetes.
-
 
 ## Exercise 1: Dockerfiles
 
@@ -32,7 +30,6 @@ and check that they start correctly (`web` and `words` should display
 a short message to indicate that they're running), but we're not
 trying to run the whole application or to connect to the services.
 This will come later.
-
 
 ### web
 
@@ -64,7 +61,6 @@ Additional information:
 - the server listens on port 80
 - the Go compiler is only useful to build the server (not to run it)
 
-
 ### words
 
 This is a REST API backend written in Java. It should be built with maven.
@@ -95,7 +91,6 @@ Additional information:
 - the server listens on port 8080
 - compilation requires `maven` (on most distributions, this will automatically install a JDK, which includes a Java compiler)
 - execution doesn't require `maven` or a Java compiler; only the JRE (Java Runtime Environment) is necessary, and in Debian and Ubuntu it can be provided by the `default-jre` package
-
 
 ### db
 
@@ -185,10 +180,7 @@ together, and that we can connect to `web`.
 
 Note: the `web` service should be exposed.
 
-
 ## Exercise 3: Kubernetes
-
-We want to deploy wordsmith on Kubernetes, and connect to the web interface from the outside.
 
 We will need to use images hosted on a registry. For our convenience, the images are available on:
 
