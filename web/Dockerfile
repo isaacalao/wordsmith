@@ -3,7 +3,7 @@
 # BUILD STAGE
 ARG GOVER="1.21.12" ALPINEVER="3.20" 
 
-FROM golang:${GOVER}-alpine${ALPINEVER} as gobuild 
+FROM golang:${GOVER}-alpine${ALPINEVER} AS gobuild 
 
 WORKDIR /webdir
 
@@ -14,7 +14,7 @@ COPY dispatcher.go /webdir
 RUN go build dispatcher.go
 
 # RUN STAGE
-FROM scratch as gorun 
+FROM scratch AS gorun 
 
 COPY --from=0 /webdir .
 
