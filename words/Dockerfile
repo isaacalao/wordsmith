@@ -1,6 +1,9 @@
 # WORDS
 
-FROM maven:3-eclipse-temurin-8-alpine
+# BUILD STAGE
+ARG ALPINEVER="3-eclipse-temurin-8-alpine"
+
+FROM maven:${ALPINEVER} AS mvnbuild
 
 WORKDIR /words
 
@@ -12,7 +15,8 @@ RUN mvn verify
 
 WORKDIR /words/target
 
-FROM maven:3-eclipse-temurin-8-alpine
+# RUN STAGE
+FROM maven:${ALPINEVER} AS runjar 
 
 COPY --from=0 /words/target .
 

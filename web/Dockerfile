@@ -1,9 +1,9 @@
 # WEB
 
+# BUILD STAGE
 ARG GOVER="1.21.12" ALPINEVER="3.20" 
 
-# BUILD STAGE
-FROM golang:${GOVER}-alpine${ALPINEVER} as baseimg 
+FROM golang:${GOVER}-alpine${ALPINEVER} as gobuild 
 
 WORKDIR /webdir
 
@@ -14,9 +14,9 @@ COPY dispatcher.go /webdir
 RUN go build dispatcher.go
 
 # RUN STAGE
-FROM scratch as runimg
+FROM scratch as gorun 
 
-COPY --from=baseimg /webdir .
+COPY --from=0 /webdir .
 
 EXPOSE 80
 

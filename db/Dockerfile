@@ -1,8 +1,9 @@
 # DATABASE
 
+# INITIALIZE AND START STAGE
 ARG ALPINEVER="3.19"
 
-FROM postgres:alpine${ALPINEVER} as baseimg
+FROM postgres:alpine${ALPINEVER} AS initdb 
 
 WORKDIR /docker-entrypoint-initdb.d/
 
