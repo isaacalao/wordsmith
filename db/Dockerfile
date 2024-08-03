@@ -12,5 +12,3 @@ COPY words.sql .
 USER postgres
 
 ENV POSTGRES_HOST_AUTH_METHOD=trust
-
-CMD [ "postgres" ]
